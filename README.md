@@ -1,6 +1,6 @@
 # Pulumi Build Action
 
-[![CI](https://github.com/heronlabs/action-pulumi-build/actions/workflows/ci.yml/badge.svg)](https://github.com/heronlabs/action-pulumi-build/actions/workflows/ci.yml)
+[![CI](https://github.com/heronlabs/action-pulumi-build/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/heronlabs/action-pulumi-build/actions/workflows/continuous-integration.yml)
 
 > Run a Pulumi command against an engine repository, overlaying the caller's stack config, and publish a report.
 
