@@ -1,6 +1,16 @@
-# Pulumi Build Action
+# 🥁 action-pulumi-build — Run Pulumi commands against an engine repo.
 
 [![CI](https://github.com/heronlabs/action-pulumi-build/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/heronlabs/action-pulumi-build/actions/workflows/continuous-integration.yml)
+
+## Contents
+
+- [Usage](#usage)
+- [Inputs](#inputs)
+- [Outputs](#outputs)
+- [Permissions](#permissions)
+- [How it works](#how-it-works)
+- [Notes](#notes)
+- [License](#license)
 
 > Run a Pulumi command against an engine repository, overlaying the caller's stack config, and publish a report.
 
@@ -31,7 +41,7 @@ jobs:
     name: ${{ inputs.command }} | ${{ inputs.environment }}
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: heronlabs/action-pulumi-build@v2
         with:
@@ -74,6 +84,13 @@ permissions:
 - Engine is pinned via `engine-ref` for reproducible runs; bump it to adopt a new engine version.
 - Node and pnpm versions come from the engine (`.node-version`, `pnpm-lock.yaml`), not the caller.
 - A `pulumi-report.txt` artifact and matching job summary are written on `always()`, so the report is produced even when the Pulumi command fails.
+
+## How it works
+
+Composite action with two shell scripts:
+
+1. **Overlay config** (`core/overlay-helm.sh`) — copies the caller's `Pulumi.yaml`, stack-specific `Pulumi.<stack>.yaml`, and `environments/` onto the checked-out engine.
+2. **Run and report** — `pnpm/action-setup` and `actions/setup-node` install the engine's dependencies, `pulumi/actions` runs the command, and `core/write-report.sh` publishes results as both a job summary and an uploaded artifact.
 
 ## License
 
