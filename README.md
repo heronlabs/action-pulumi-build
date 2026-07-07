@@ -1,6 +1,10 @@
-# 🏗️ action-pulumi-build — Run Pulumi commands against an engine repo.
+# 🏗️ action-pulumi-build — Run Pulumi against engine repo
 
-[![CI](https://github.com/heronlabs/action-pulumi-build/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/heronlabs/action-pulumi-build/actions/workflows/continuous-integration.yml)
+[![CI][ci-badge]][ci-url]
+[![License: MIT][license-badge]][license-url]
+[![GitHub Marketplace][marketplace-badge]][marketplace-url]
+
+> **GitHub Action** to run a Pulumi command against an engine repository, overlaying the caller's stack config, and publish a report.
 
 ## Contents
 
@@ -12,8 +16,6 @@
 - [How it works](#how-it-works)
 - [Notes](#notes)
 - [License](#license)
-
-> Run a Pulumi command against an engine repository, overlaying the caller's stack config, and publish a report.
 
 Checks out a pinned ref of the Pulumi engine, overlays the caller's `Pulumi.yaml`, per-stack `Pulumi.<stack>.yaml`, and `environments/` onto it, installs dependencies with pnpm, then runs the requested command via `pulumi/actions`. Output is published as both a job summary and an uploaded artifact.
 
@@ -113,3 +115,10 @@ Composite action with two shell scripts:
 ## License
 
 MIT
+
+[ci-badge]: https://github.com/heronlabs/action-pulumi-build/actions/workflows/continuous-integration.yml/badge.svg
+[ci-url]: https://github.com/heronlabs/action-pulumi-build/actions/workflows/continuous-integration.yml
+[license-badge]: https://img.shields.io/badge/License-MIT-blue.svg
+[license-url]: ./LICENSE
+[marketplace-badge]: https://img.shields.io/badge/GitHub-Marketplace-green.svg
+[marketplace-url]: https://github.com/marketplace/actions/action-pulumi-build
