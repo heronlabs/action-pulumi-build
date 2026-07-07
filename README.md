@@ -81,11 +81,16 @@ permissions:
 ## Architecture
 
 ```mermaid
-graph TD
-    A[action.yml] --> B[core/overlay-helm.sh]
-    B --> C[tests/]
-    C --> D[Makefile]
-    D --> E[version.txt]
+graph LR
+    A[Caller checks out repo] --> B[action.yml<br/>composite action]
+    B --> C[Checkout engine]
+    C --> D[Overlay config<br/>core/overlay-helm.sh]
+    D --> E[Setup pnpm]
+    E --> F[Setup Node.js]
+    F --> G[pnpm install]
+    G --> H[Run Pulumi command<br/>pulumi/actions]
+    H --> I[Write report<br/>core/write-report.sh]
+    I --> J[Upload artifact<br/>actions/upload-artifact]
 ```
 
 ## Notes

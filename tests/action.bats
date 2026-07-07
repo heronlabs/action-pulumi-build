@@ -19,7 +19,7 @@ setup() {
   mkdir -p "$dir/environments" "$dir/engine"
   printf 'shared: true\n' >"$dir/environments/common.yaml"
 
-  run bash -c "cd '$dir' && bash '$OVERLAY' 2>&1"
+  run bash -c "cd '$dir' && GITHUB_WORKSPACE='$dir' bash '$OVERLAY' 2>&1"
 
   [ "$status" -eq 0 ]
   cmp -s "$dir/Pulumi.yaml"      "$dir/engine/Pulumi.yaml"
@@ -33,6 +33,16 @@ setup() {
 @test "overlay: missing Pulumi.yaml is hard error" {
   local dir; dir="$(mktemp -d)"
   mkdir -p "$dir/engine"
+
+  run bash -c "cd '$dir' && GITHUB_WORKSPACE='$dir' bash '$OVERLAY' 2>&1"
+
+  [ "$status" -ne 0 ]
+
+  rm -rf "$dir"
+}
+
+@test "overlay: missing GITHUB_WORKSPACE is hard error" {
+  local dir; dir="$(mktemp -d)"
 
   run bash -c "cd '$dir' && bash '$OVERLAY' 2>&1"
 

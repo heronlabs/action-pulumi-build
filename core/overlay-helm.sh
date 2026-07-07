@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+: "${GITHUB_WORKSPACE:?GITHUB_WORKSPACE is required}"
+
 # Overlay the caller's stack configuration (from the checked-out workspace root)
 # onto the engine so Pulumi resolves Pulumi.yaml, the per-stack Pulumi.<stack>.yaml
 # files, and environments/ from the caller rather than the engine's defaults.
