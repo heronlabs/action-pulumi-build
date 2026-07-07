@@ -1,4 +1,4 @@
-# 🥁 action-pulumi-build — Run Pulumi commands against an engine repo.
+# 🏗️ action-pulumi-build — Run Pulumi commands against an engine repo.
 
 [![CI](https://github.com/heronlabs/action-pulumi-build/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/heronlabs/action-pulumi-build/actions/workflows/continuous-integration.yml)
 
