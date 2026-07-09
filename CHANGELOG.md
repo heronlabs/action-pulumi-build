@@ -1,3 +1,9 @@
+## v2.0.18 (2026-07-09)
+
+### Reverts
+
+* revert: restore version to 2.0.17 (c9f35d2bc32e00cccb89e334e7c4cd383763dc7c)
+
 ## v6.0.0 (2026-07-09)
 
 ### ⚠ BREAKING CHANGES
