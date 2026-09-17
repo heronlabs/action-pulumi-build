@@ -1,3 +1,9 @@
+## v3.0.5 (2026-09-17)
+
+### Miscellaneous Chores
+
+* other: remove unused supera.json configuration file (2c89ee24a4c81005a515dcfd171161bebed7a444)
+
 ## v3.0.4 (2026-07-17)
 
 
